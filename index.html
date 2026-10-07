@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tamil Voice Studio</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23d4ff00'/><text x='50' y='70' font-size='60' text-anchor='middle' font-family='monospace' font-weight='700'>TS</text></svg>" />
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <div class="loader-mark">TS</div>
+      <div class="loader-label">Initializing Studio</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <div class="loader-status" id="loaderStatus">Booting…</div>
+    </div>
+
+    <div class="wrap">
+      <header class="top">
+        <div class="mark">
+          <div class="mark-box">TS</div>
+          <div class="mark-text">Tamil Studio <b>v3.0</b></div>
+        </div>
+        <div class="top-meta">STATUS <span id="statusPill">ONLINE</span></div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-tag">English → Tamil Voice-Over</div>
+        <h1>Translate video<br /><em>to Tamil</em> voice.</h1>
+        <p>Drop a file or paste a link. Get the same video back with Tamil narration.</p>
+      </section>
+
+      <div class="tabs">
+        <button class="tab active" data-i="0"><span class="tab-num">01</span>Upload</button>
+        <button class="tab" data-i="1"><span class="tab-num">02</span>URL</button>
+      </div>
+
+      <div class="pane active" id="pane-0">
+        <label class="drop" id="drop">
+          <div class="drop-badge">DROP ZONE</div>
+          <div class="drop-title">Drop your video here</div>
+          <div class="drop-sub">or click to browse files</div>
+          <div class="drop-formats">MP4 · MKV · MOV · WEBM</div>
+          <input type="file" id="file" accept="video/*" />
+        </label>
+        <div class="picked" id="picked">
+          <div class="picked-mark">FILE</div>
+          <div class="picked-body">
+            <div class="picked-name" id="pname"></div>
+            <div class="picked-size" id="psize"></div>
+          </div>
+          <button class="picked-x" id="px" type="button">REMOVE</button>
+        </div>
+      </div>
+
+      <div class="pane" id="pane-1">
+        <div class="url-block">
+          <div class="url-label">Source URL</div>
+          <div class="url-row">
+            <span class="url-prefix">&gt;</span>
+            <input class="url-input" id="url" placeholder="https://example.com/video.mp4" />
+            <button class="url-paste" id="paste" type="button">PASTE</button>
+          </div>
+          <div class="url-hint">
+            Direct MP4 links work best. For YouTube/Facebook/Instagram, download the video first, then use the Upload tab.
+          </div>
+        </div>
+      </div>
+
+      <button class="cta" id="go" type="button" disabled>
+        <span id="ctaLabel">Translate to Tamil</span>
+        <span class="cta-arrow">→</span>
+      </button>
+
+      <div class="progress" id="prog">
+        <div class="steps">
+          <div class="step" id="st1"><div class="step-num">01</div><div class="step-label">Extract</div></div>
+          <div class="step" id="st2"><div class="step-num">02</div><div class="step-label">Transcribe</div></div>
+          <div class="step" id="st3"><div class="step-num">03</div><div class="step-label">Translate</div></div>
+          <div class="step" id="st4"><div class="step-num">04</div><div class="step-label">Voice</div></div>
+          <div class="step" id="st5"><div class="step-num">05</div><div class="step-label">Merge</div></div>
+        </div>
+        <div class="bar"><div class="bar-fill" id="fill"></div></div>
+        <div class="status" id="statusText">Starting…</div>
+      </div>
+
+      <div class="err" id="err">
+        <div class="err-label">Error</div>
+        <div id="errMsg"></div>
+      </div>
+
+      <div class="success" id="success">
+        <div class="success-mark">COMPLETE</div>
+        <h3>Tamil video ready</h3>
+        <p>Backup MP3 saved to downloads folder</p>
+        <a class="success-btn" id="dl" href="#" download>Download video ↓</a>
+      </div>
+
+      <footer class="foot">
+        <div>Vercel-ready · <b>v3.0</b></div>
+        <div>ffmpeg.wasm · Edge TTS · MyMemory</div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
